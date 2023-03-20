@@ -59,7 +59,7 @@ class Animation(pygame.sprite.Sprite):
             self.curr_frame += 1
 
 def new_explosion(pos, size, interval, opacity):
-    explosion = Animation(expl, pos, size, interval, opacity, False)
+    explosion = Animation(expl.copy(), pos, size, interval, opacity, False)
     spriteGroup.add(explosion)
 
 spriteGroup = pygame.sprite.Group()

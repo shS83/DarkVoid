@@ -2,7 +2,7 @@ import pygame, random, os
 
 pygame.init()
 
-VERSION = 0.71
+VERSION = 0.72
 FULLSCREEN = False
 HOME_DIR = os.getcwd()
 xRES = 1024
@@ -31,13 +31,8 @@ def begin_intro(screen, x_resolution, y_resolution):
     yRES = y_resolution
 
     timer = pygame.time.Clock()
-    #fonts = ['arial black', 'constantia', 'warheliosconcbold', 'averiasansbold', 'goodtimes', 'prceltic', 'novaround', 'xfiles']
-    #fonts = ['prceltic']
-    #font = pygame.font.SysFont(fonts[0], 72)
-    #font = pygame.font.SysFont('msgothic', 72)
     font = pygame.font.Font(f'{HOME_DIR}/assets/prceltic.ttf', 72)
     font2 = pygame.font.Font(f'{HOME_DIR}/assets/msgothic.ttc', 18)
-    #font2 = pygame.font.SysFont('msgothic', 18)
     running = True
     cooldown = 10
     switch = False
@@ -79,6 +74,7 @@ def begin_intro(screen, x_resolution, y_resolution):
 
                 if event.key == pygame.K_ESCAPE and not in_controls:
                     running = False
+                    return 9
 
                 if event.key == pygame.K_SPACE:
                     pygame.event.clear()

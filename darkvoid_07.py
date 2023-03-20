@@ -369,9 +369,10 @@ def msg_fx(opa, rot, sca):
 fullscreen_is_true = intro_module.begin_intro(screen, xRES, yRES)
 msg_reset()
 new_game()
-if fullscreen_is_true != FULLSCREEN:
+if fullscreen_is_true == 9:
+    running = False
+if fullscreen_is_true != FULLSCREEN and fullscreen_is_true != 9:
     switch_fullscreen()
-
 
 while running:
     NOW_MS = pygame.time.get_ticks()
