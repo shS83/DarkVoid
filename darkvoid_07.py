@@ -107,7 +107,7 @@ class GameObject:
     def collides_with(self, other_obj):
         distance = self.position.distance_to(other_obj.position)
         return distance < self.radius + other_obj.radius
-    
+
     def collides_with_tolerance(self, other_obj, tolerance):
         distance = self.position.distance_to(other_obj.position)
         return distance < self.radius + other_obj.radius + tolerance
@@ -173,7 +173,7 @@ class Asteroid(GameObject):
         self.sprite = rotozoom(self.ASTEROID_IMAGE, 0, self.scale).convert_alpha()
         self.rotdelta = random.randint(-100, 100) / 100
         super().__init__(position, self.sprite, get_random_velocity(2, 10) / 8 * level.asteroid_speed)
-    
+
     def draw(self, surface):
         if self.hit:
             blit_position = self.position - Vector2(self.radius)
@@ -183,7 +183,7 @@ class Asteroid(GameObject):
         else:
             blit_position = self.position - Vector2(self.radius)
             surface.blit(self.sprite, blit_position)
-        
+
     def rotate_in_place(self):
         self.rotated_image = pygame.transform.rotate(rotozoom(self.ASTEROID_IMAGE, 0, self.scale), self.rotation)
         self.rotation += self.rotdelta
@@ -200,12 +200,12 @@ class Bullet(GameObject):
     def move(self, surface):
         self.position = self.position + self.velocity
 
-class Bullet2(GameObject):     
+class Bullet2(GameObject):
     def __init__(self, position, ang):
         self.angle = ang
         self.damage = 0.5
         super().__init__(position, pygame.transform.rotate(LASER2_IMAGE, math.degrees(self.angle) + 125), self.angle)
-    
+
     def move(self, surface):
         x, y = self.position
         x += math.sin(self.angle) * 5
@@ -219,7 +219,7 @@ def spawn_enemy(amount, new=False):
         for _ in range(amount):
             while True:
                 position = get_random_position(screen)
-                
+
                 if new:
                     position = Vector2(-100, -100)
                     new = False
@@ -267,7 +267,7 @@ def draw_screen_objects():
     screen.blit(font.render(f'LEVEL: {level.stage}', True, 'white'), (30, 30))
     screen.blit(font.render(f'POINTS: {SCORE}', True, 'white'), (30, 50))
     screen.blit(font.render(f'{message}', True, 'red'), (30, 70))
-    
+
     # explosions, particles and sprites blit
 
     pox_module.spriteGroup.update(screen)
@@ -284,7 +284,7 @@ def draw_screen_objects():
         game_object.move(screen)
         game_object.draw(screen)
 
-def draw_input(screen):   
+def draw_input(screen):
     if active:
         color = color_active
     else:
@@ -358,7 +358,7 @@ def msg_reset():
     global msg_opacity, msg_rot, msg_sca
     msg_opacity = 255
     msg_rot = 1
-    msg_sca = 1 
+    msg_sca = 1
 
 def msg_fx(opa, rot, sca):
     global msg_opacity, msg_rot, msg_sca
@@ -377,17 +377,17 @@ while running:
     NOW_MS = pygame.time.get_ticks()
     draw_screen_objects()
 
-    for event in pygame.event.get():    
+    for event in pygame.event.get():
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             running = False
         if event.type == pygame.QUIT:
-            running = False        
-       
+            running = False
+
         if event.type == pygame.KEYDOWN and event.key == pygame.K_F10:
             switch_fullscreen()
-  
+
         if event.type == pygame.KEYDOWN and in_typing:
-  
+
             if event.key == pygame.K_BACKSPACE:
                 input_text = input_text[:-1]
             elif event.key == pygame.K_RETURN:
@@ -444,7 +444,7 @@ while running:
             screen.fill((100, 100, 100), special_flags=pygame.BLEND_RGBA_SUB)
             center_text(screen, font, yRES-230, 'Enter your name, pilot!', 'white', xRES)
             draw_input(screen)
-            pygame.event.post(pygame.event.Event(NEWHIGHSCORE))    
+            pygame.event.post(pygame.event.Event(NEWHIGHSCORE))
 
         if event.type == HIGHSCORES:
             if in_hs:
@@ -501,16 +501,16 @@ while running:
         if event.type == GAME:
             ship.visible = True
             pygame.event.clear()
-    
+
     if ship and ship.visible:
 
         keys = pygame.key.get_pressed()
-        
+
         if NOW_MS > keypress + keyinterval:
             if keys[pygame.K_w] or keys[pygame.K_UP]:
                 keypress = pygame.time.get_ticks()
                 ship.accelerate()
-            if keys[pygame.K_a] or keys[pygame.K_LEFT]:        
+            if keys[pygame.K_a] or keys[pygame.K_LEFT]:
                 keypress = pygame.time.get_ticks()
                 ship.rotate(clockwise=False)
             if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
@@ -534,7 +534,7 @@ while running:
 
                 rocks = asteroids.copy()
                 rocks.remove(asteroid)
-                
+
                 # introduce collision delay
                 collision_delay = 150
                 now = pygame.time.get_ticks()

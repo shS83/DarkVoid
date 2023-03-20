@@ -29,7 +29,7 @@ class Particle(pygame.sprite.Sprite):
         if self.surface == self.circle:
             self.rotdelta = 0
             self.rotdeltach = 0
-        else:    
+        else:
             self.rotdelta = random.randint(-360, 360)
             self.rotdeltach = random.randint(1, 10)
         self.image = self.surface
@@ -42,7 +42,7 @@ class Particle(pygame.sprite.Sprite):
         self.ang = math.radians(random.randint(direction-tolerance, direction+tolerance))
         self.power = random.randint(1,100)
         self.start_time = pygame.time.get_ticks()
-    
+
     def update(self, screen):
         time_now = pygame.time.get_ticks()
         if (self.power > 0):
@@ -67,7 +67,7 @@ class Particle(pygame.sprite.Sprite):
                     deltay = self.power * time_change * math.cos(self.ang) + gravitydelta
                 else:
                     deltay = self.power * time_change * math.cos(self.ang)
-                    
+
                 self.rect.center = ( self.x + int(deltax), self.y - int(deltay))
                 if self.opacity < 1:
                     particles.remove(self)
@@ -80,7 +80,7 @@ class Particle(pygame.sprite.Sprite):
 def add_stream(x, y, amount, color, direction, tolerance, psizemax, opacitydelta, gravity=True, secondcolor=(255,255,255)):
     for i in range(1, amount):
         if not i % 2:
-            particles.append(Particle(x, y, secondcolor, direction, tolerance, psizemax, opacitydelta, gravity))    
+            particles.append(Particle(x, y, secondcolor, direction, tolerance, psizemax, opacitydelta, gravity))
         else:
             particles.append(Particle(x, y, color, direction, tolerance, psizemax, opacitydelta, gravity))
     spriteGroup.add(particles)

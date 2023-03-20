@@ -71,7 +71,7 @@ def begin_intro(screen, x_resolution, y_resolution):
     while running:
 
         for event in pygame.event.get():
-        
+
             if event.type == pygame.QUIT:
                 running = False
 
@@ -84,7 +84,7 @@ def begin_intro(screen, x_resolution, y_resolution):
                     pygame.event.clear()
                     in_logo = False
                     pygame.event.post(pygame.event.Event(FADEOUTEVENT))
-                
+
                 if in_logo and event.key == pygame.K_F1:
                     pygame.event.clear()
                     in_logo = False
@@ -113,7 +113,7 @@ def begin_intro(screen, x_resolution, y_resolution):
                     screen.fill((0, 0, 0))
                     center_text(screen, font, yRES/2, 'DARK VOID', (i, 0, 0))
                     i += 1
-                    if i > 254: 
+                    if i > 254:
                         i = 255
                         pygame.event.clear()
                         in_logo = True
@@ -154,21 +154,21 @@ def begin_intro(screen, x_resolution, y_resolution):
 
             if event.type == FADEOUTEVENT:
                 in_logo = False
-                if i > 1: 
+                if i > 1:
                     now = pygame.time.get_ticks()
                     if now - last >= cooldown:
                         screen.fill((0, 0, 0))
                         center_text(screen, font, yRES/2, 'DARK VOID', (i, 0, 0))
                         i -= 2
-                        if i < 2: 
+                        if i < 2:
                             pygame.event.clear()
                             pygame.event.post(pygame.event.Event(INITGAME))
                     pygame.event.post(pygame.event.Event(FADEOUTEVENT))
-            
+
             if event.type == INITGAME:
                 finished = True
                 running = False
-        
+
         pygame.display.flip()
         timer.tick(120)
 

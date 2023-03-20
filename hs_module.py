@@ -44,12 +44,12 @@ def save_scores(scores):
     except:
         return False
 
-    
+
 def blend_fill(screen, fade_to):
-    
+
     c = fade_to
     screen.fill((c, c, c), None, special_flags=pygame.BLEND_RGBA_SUB)
-   
+
 def scores(screen, scores, fontname, fsize, xRES, yRES):
 
     hs_font = pygame.font.Font(f'{HOME_DIR}/assets/{fontname}', int(round(fsize*1.2)))
@@ -69,10 +69,10 @@ def scores(screen, scores, fontname, fsize, xRES, yRES):
         usize = score_font.size(user)
         ssize = score_font.size(score)
         userblit = score_font.render(user, True, (255, 255, 255))
-        scoreblit = score_font.render(score, True, (255, 255, 255))     
+        scoreblit = score_font.render(score, True, (255, 255, 255))
         screen.blit(userblit, (xRES/2-(175), yRES/10+50+(usize[1]+30*i)))
         screen.blit(scoreblit, (xRES/2+(175-ssize[0]), yRES/10+50+(ssize[1]+30*i)))
-                    
+
 
     #for s in range(0, len(scores)-1):
     #    to_blit = font.render(scores[s], True, (255, 255, 255))
@@ -80,11 +80,8 @@ def scores(screen, scores, fontname, fsize, xRES, yRES):
 
 #while running:
 
-#    for event in pygame.event.get():    
+#    for event in pygame.event.get():
 #        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
 #                running = False
 #        if event.type == pygame.QUIT:
 #            running = False
-        
-    
-    

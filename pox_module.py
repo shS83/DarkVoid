@@ -29,7 +29,7 @@ class Particle(pygame.sprite.Sprite):
         if self.surface == self.circle:
             self.rotdelta = 0
             self.rotdeltach = 0
-        else:    
+        else:
             self.rotdelta = random.randint(-360, 360)
             self.rotdeltach = random.randint(1, 10)
         self.image = self.surface
@@ -40,7 +40,7 @@ class Particle(pygame.sprite.Sprite):
         self.ang = math.radians(random.randint(1, 360))
         self.power = random.randint(1,100)
         self.start_time = pygame.time.get_ticks()
-    
+
     def update(self, screen):
         time_now = pygame.time.get_ticks()
         if (self.power > 0):
@@ -65,7 +65,7 @@ class Particle(pygame.sprite.Sprite):
                     deltay = self.power * time_change * math.cos(self.ang) + gravitydelta
                 else:
                     deltay = self.power * time_change * math.cos(self.ang)
-                    
+
                 self.rect.center = ( self.x + int(deltax), self.y - int(deltay))
                 if self.opacity < 1:
                     #charges.remove(self)
@@ -78,12 +78,12 @@ class Particle(pygame.sprite.Sprite):
 def add_charge(x, y, amount, color, gravity=True):
     for i in range(1, amount):
         if not i % 10:
-            charges.append(Particle(x, y, (255, 255, 255), gravity))    
+            charges.append(Particle(x, y, (255, 255, 255), gravity))
         else:
             charges.append(Particle(x, y, color, gravity))
     spriteGroup.add(charges)
 
-def flash_screen(col):   
+def flash_screen(col):
     if col > 1:
         screen.fill((col, col, col))
         col -= 15
@@ -103,8 +103,8 @@ startTime = pygame.time.get_ticks()
 #running = True
 
 #while running:
-#    
-#    for event in pygame.event.get():    
+#
+#    for event in pygame.event.get():
 #        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
 #                running = False
 #        if event.type == pygame.MOUSEBUTTONDOWN:
@@ -112,20 +112,19 @@ startTime = pygame.time.get_ticks()
 #            add_charge(mx, my, 1000, (random.randint(1, 255), random.randint(1, 255), random.randint(1, 255)))
 #        if event.type == pygame.QUIT:
 #            running = False
-    
+
     # Main routine begin
-    
+
 #    ticks = pygame.time.get_ticks()
 #    if flash:
 #        col = flash_screen(col)
 #        if col < 1:
 #            flash = False
 #    else:
-#        screen.fill((0, 0, 0)) 
+#        screen.fill((0, 0, 0))
 #    spriteGroup.update()
 #    spriteGroup.draw(screen)
-    
-    
+
 #    if startTime + ticks > blasttime:
 #        randX = random.randint(50, xRES - 50)
 #        randY = random.randint(50, yRES - 50)
