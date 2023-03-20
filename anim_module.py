@@ -28,7 +28,7 @@ def loadsprite():
 expl = loadsprite()
 
 class Animation(pygame.sprite.Sprite):
-    
+
     def __init__(self, anim, pos, set_size, interval, opacity=255, repeat=False):
         super().__init__()
         self.pos = pos
