@@ -2,7 +2,7 @@ import pygame, random, os
 
 pygame.init()
 
-VERSION = 0.72
+VERSION = 0.8
 FULLSCREEN = False
 HOME_DIR = os.getcwd()
 xRES = 1024
