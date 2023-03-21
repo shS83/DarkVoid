@@ -1,15 +1,10 @@
 # ignore all .txt files
 darkvoid_highscores.backup
-06
-07
-071
-__pycache__
-build
 darkvoid_04.py
 darkvoid_05.py
 darkvoid_06.py
 darkvoid_06.spec
 darkvoid_07.spec
-dist
 laser_2.xcf
 sprite_0.xcf
+releases
