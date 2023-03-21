@@ -193,9 +193,9 @@ class Asteroid(GameObject):
 class Bullet(GameObject):
     def __init__(self, position, velocity):
         #ang_delta = position.angle_to(ship.direction)
-        ang_delta = ship.actual_angle
+        self.angle = -ship.actual_angle
         self.damage = 1
-        super().__init__(position, pygame.transform.rotate(LASER_IMAGE, -ang_delta + 125), velocity)
+        super().__init__(position, pygame.transform.rotate(LASER_IMAGE, self.angle + 125), velocity)
 
     def move(self, surface):
         self.position = self.position + self.velocity
@@ -555,12 +555,17 @@ while running:
             for asteroid in asteroids[:]:
                 if asteroid.collides_with(bullet):
                     asteroid.hp -= bullet.damage
+                    if bullet.damage == 1:
+                        pfx_module.add_stream(bullet.position[0], bullet.position[1], 50, (100, 255, 100), int(-bullet.angle+180), 100, 4, 10, False, (255, 255, 255))
+                    else:
+                        pfx_module.add_stream(bullet.position[0], bullet.position[1], 50, (100, 100, 255), int(math.degrees(-bullet.angle)), 100, 4, 10, False, (255, 255, 255))
                     bullets.remove(bullet)
-                    asteroid.hit = 5
+                    asteroid.hit = 4
+                    
                     if asteroid.hp < 1:
                         SCORE += 1
                         pox_module.add_charge(asteroid.position[0], asteroid.position[1], 300 * asteroid.size, (255, 255, 0), False)
-                        anim_module.new_explosion(asteroid.position, 128 * (asteroid.size * 0.5), 25, 225)
+                        anim_module.new_explosion(asteroid.position, 150 * (asteroid.size * 0.5), 25, 225)
                         asteroids.remove(asteroid)
                     break
 
