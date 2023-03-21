@@ -1,4 +1,5 @@
-# ignore all .txt files
+# ignore old versions, sprite templates, etc.
+__pycache__
 darkvoid_highscores.backup
 darkvoid_04.py
 darkvoid_05.py
