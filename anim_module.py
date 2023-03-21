@@ -43,7 +43,7 @@ class Animation(pygame.sprite.Sprite):
         self.interval = interval
         self.repeat = repeat
         self.curr_frame = 1
-        self.anim_length = len(self.anim)
+        self.anim_length = len(self.anim)-1
         self.last = 0
 
     def update(self, screen):
@@ -59,7 +59,7 @@ class Animation(pygame.sprite.Sprite):
             self.curr_frame += 1
 
 def new_explosion(pos, size, interval, opacity):
-    explosion = Animation(expl.copy(), pos, size, interval, opacity, False)
+    explosion = Animation(expl, pos, size, interval, opacity, False)
     spriteGroup.add(explosion)
 
 spriteGroup = pygame.sprite.Group()
