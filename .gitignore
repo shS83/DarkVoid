@@ -1,4 +1,5 @@
 # ignore old versions, sprite templates, etc.
+compile.cmd
 datatmp
 dist
 dlltemp
