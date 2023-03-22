@@ -367,10 +367,11 @@ def msg_fx(opa, rot, sca):
     msg_sca += sca
 
 fullscreen_is_true = intro_module.begin_intro(screen, xRES, yRES)
-msg_reset()
-new_game()
 if fullscreen_is_true == 9:
     running = False
+else:
+    msg_reset()
+    new_game()
 if fullscreen_is_true != FULLSCREEN and fullscreen_is_true != 9:
     switch_fullscreen()
 
@@ -473,9 +474,13 @@ while running:
                     in_hs = False
                     pygame.event.clear()
                     fullscreen_is_true = intro_module.begin_intro(screen, xRES, yRES)
-                    if fullscreen_is_true != FULLSCREEN:
+                    if fullscreen_is_true == 9:
+                        running = False
+                    else:
+                        msg_reset()
+                        new_game()
+                    if fullscreen_is_true != FULLSCREEN and fullscreen_is_true != 9:
                         switch_fullscreen()
-                    new_game()
                 pygame.event.post(pygame.event.Event(HIGHSCORES))
 
         if event.type == DIED:
