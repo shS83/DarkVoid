@@ -1,6 +1,7 @@
 # ignore old versions, sprite templates, etc.
 compile.cmd
 datatmp
+build
 dist
 dlltemp
 __pycache__
