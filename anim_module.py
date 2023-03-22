@@ -9,7 +9,6 @@ timer = pygame.time.Clock()
 pygame.init()
 startTime = pygame.time.get_ticks()
 running = True
-#font = pygame.font.SysFont('msgothic', 18)
 font = pygame.font.Font(f'{ASSET_DIR}/msgothic.ttc', 18)
 screen = pygame.display.set_mode([xRES, yRES], pygame.SHOWN)
 LEVELCHANGE = pygame.USEREVENT + 5

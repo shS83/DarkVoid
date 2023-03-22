@@ -191,7 +191,6 @@ class Asteroid(GameObject):
 
 class Bullet(GameObject):
     def __init__(self, position, velocity):
-        #ang_delta = position.angle_to(ship.direction)
         self.angle = -ship.actual_angle
         self.damage = 1
         super().__init__(position, pygame.transform.rotate(LASER_IMAGE, self.angle + 125), velocity)

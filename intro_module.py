@@ -96,12 +96,6 @@ def begin_intro(screen, x_resolution, y_resolution):
                 if event.key == pygame.K_F10:
                     switch_fullscreen()
 
-                #if in_logo and event.key == pygame.K_RIGHT:
-                #    print(f"next font {fonts[f+1]}")
-                #    if f < len(fonts):
-                #        f += 1
-                #        font = pygame.font.SysFont(fonts[f], 72)
-
             if event.type == INITEVENT and i < 255:
                 now = pygame.time.get_ticks()
                 if now - last >= cooldown:
@@ -169,8 +163,3 @@ def begin_intro(screen, x_resolution, y_resolution):
         timer.tick(120)
 
     return FULLSCREEN
-
-#xRES = 1024
-#yRES = 768
-#screen = pygame.display.set_mode([xRES, yRES], pygame.SHOWN)
-#begin_intro(screen, xRES, yRES)

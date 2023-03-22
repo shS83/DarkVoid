@@ -53,11 +53,6 @@ class Particle(pygame.sprite.Sprite):
                     self.rotdelta -= self.rotdeltach
                 else:
                     self.rotdelta += self.rotdeltach
-                #if self.color == (255, 255, 255):
-                #    self.opacity += self.opacitych
-                #    if self.opacity < 1 or self.opacity > 255:
-                #        self.opacitych = -self.opacitych
-                #else:
                 self.opacity -= self.opacitydelta
                 gravitydelta = self.GRAVITY * time_change * time_change / 2.0
                 deltax = self.power * time_change * math.sin(self.ang)
@@ -68,7 +63,6 @@ class Particle(pygame.sprite.Sprite):
 
                 self.rect.center = ( self.x + int(deltax), self.y - int(deltay))
                 if self.opacity < 1:
-                    #charges.remove(self)
                     self.kill()
 
                 if not screen.get_rect().colliderect(self.rect) or (self.gravity and self.rect.y > 0 and not screen.get_rect().colliderect(self.rect)):
@@ -91,7 +85,6 @@ def flash_screen(col):
 
 maxSpr = 0
 font = pygame.font.SysFont('msgothic', 18)
-#screen = pygame.display.set_mode([xRES, yRES], pygame.FULLSCREEN)
 charges = []
 spriteGroup = pygame.sprite.Group()
 blasttime = 1000
@@ -100,52 +93,3 @@ flash = False
 col = 0
 total_fired = 0
 startTime = pygame.time.get_ticks()
-#running = True
-
-#while running:
-#
-#    for event in pygame.event.get():
-#        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-#                running = False
-#        if event.type == pygame.MOUSEBUTTONDOWN:
-#            mx, my = pygame.mouse.get_pos()
-#            add_charge(mx, my, 1000, (random.randint(1, 255), random.randint(1, 255), random.randint(1, 255)))
-#        if event.type == pygame.QUIT:
-#            running = False
-
-    # Main routine begin
-
-#    ticks = pygame.time.get_ticks()
-#    if flash:
-#        col = flash_screen(col)
-#        if col < 1:
-#            flash = False
-#    else:
-#        screen.fill((0, 0, 0))
-#    spriteGroup.update()
-#    spriteGroup.draw(screen)
-
-#    if startTime + ticks > blasttime:
-#        randX = random.randint(50, xRES - 50)
-#        randY = random.randint(50, yRES - 50)
-#        randA = random.randint(300, 3000)
-#        randR = random.randint(1, 255)
-#        randG = random.randint(1, 255)
-#        randB = random.randint(1, 255)
-#        flash = True
-#        col = 255
-#        add_charge(randX, randY, randA, (randR, randG, randB))
-#        total_fired += 1
-#        if randA < 1000:
-#            total_fired +=1
-#            add_charge(randX, randY, randA, (randG, randB, randR))
-#        blasttime += blastinterval + random.randint(500, 2500)
-
-#    if len(spriteGroup) > maxSpr:
-#        maxSpr = len(spriteGroup)
-#    screen.blit(font.render(f"sprites: {len(spriteGroup)} sprMax: {maxSpr}", True, "white"), (30, 30))
-#    screen.blit(font.render(f"total fired: {total_fired}", True, "white"), (30, 50))
-#    pygame.display.flip()
-#    timer.tick(120)
-
-    # Main routine end

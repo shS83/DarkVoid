@@ -5,7 +5,6 @@ yRES = 768
 NOW_MS = 0
 timer = pygame.time.Clock()
 pygame.init()
-#screen = pygame.display.set_mode([xRES, yRES], pygame.SHOWN)
 startTime = pygame.time.get_ticks()
 running = True
 font = pygame.font.SysFont('msgothic', 18)
@@ -54,8 +53,6 @@ def scores(screen, scores, fontname, fsize, xRES, yRES):
 
     hs_font = pygame.font.Font(f'{HOME_DIR}/assets/{fontname}', int(round(fsize*1.2)))
     score_font = pygame.font.Font(f'{HOME_DIR}/assets/{fontname}', fsize)
-    #hs_font = pygame.font.SysFont(fontname, int(round(fsize*1.2)))
-    #score_font = pygame.font.SysFont(fontname, fsize)
     blend_fill(screen, 30)
     hstext = 'HALL OF FAME'
     hsblit = hs_font.render(hstext, True, (255, 255, 255))
@@ -72,16 +69,3 @@ def scores(screen, scores, fontname, fsize, xRES, yRES):
         scoreblit = score_font.render(score, True, (255, 255, 255))
         screen.blit(userblit, (xRES/2-(175), yRES/10+50+(usize[1]+30*i)))
         screen.blit(scoreblit, (xRES/2+(175-ssize[0]), yRES/10+50+(ssize[1]+30*i)))
-
-
-    #for s in range(0, len(scores)-1):
-    #    to_blit = font.render(scores[s], True, (255, 255, 255))
-    #    screen.blit(to_blit, (100, 100+s*50))
-
-#while running:
-
-#    for event in pygame.event.get():
-#        if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-#                running = False
-#        if event.type == pygame.QUIT:
-#            running = False
