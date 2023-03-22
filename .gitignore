@@ -1,5 +1,5 @@
 # ignore old versions, sprite templates, etc.
-compiled-dist
+dist
 datatmp
 dlltemp
 __pycache__
