@@ -1,6 +1,6 @@
 # ignore old versions, sprite templates, etc.
-dist
 datatmp
+dist
 dlltemp
 __pycache__
 darkvoid_highscores.backup
