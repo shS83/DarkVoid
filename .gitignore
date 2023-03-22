@@ -1,4 +1,7 @@
 # ignore old versions, sprite templates, etc.
+compiled-dist
+datatmp
+dlltemp
 __pycache__
 darkvoid_highscores.backup
 darkvoid_04.py
