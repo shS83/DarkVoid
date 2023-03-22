@@ -2,7 +2,7 @@ import pygame, random, os
 
 pygame.init()
 
-VERSION = 0.8
+VERSION = 0.81
 FULLSCREEN = False
 HOME_DIR = os.getcwd()
 xRES = 1024
@@ -39,7 +39,7 @@ def begin_intro(screen, x_resolution, y_resolution):
     i = 0
     last = 0
     logointerval = 1000
-    #pygame.display.set_caption('DARK VOID')
+    pygame.display.set_caption('DARK VOID')
     xd, yd = font.size('DARK VOID')
     xd2, yd2 = font2.size('press space to continue')
     xd3, yd3 = font2.size('F1 for controls')
