@@ -14,3 +14,7 @@ darkvoid_07.spec
 laser_2.xcf
 sprite_0.xcf
 releases
+.venv
+.idea
+*.py[cod]
+__pycache__
